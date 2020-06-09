@@ -12,4 +12,6 @@
 */
 //后台 路由
 Route::get('/','admin\IndexController@index');
+//周学智测试
+Route::post('/','admin\IndexController@index');
 
