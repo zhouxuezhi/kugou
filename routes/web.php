@@ -12,4 +12,5 @@
 */
 //后台 路由
 Route::get('/','admin\IndexController@index');
+Route::get('/gyx','admin\IndexController@gyx');
 
