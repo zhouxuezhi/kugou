@@ -12,6 +12,7 @@
 */
 //后台 路由
 Route::get('/','admin\IndexController@index');
+Route::get('/gyx','admin\IndexController@gyx');
 //周学智测试
-Route::post('/','admin\IndexController@index');
+Route::post('/','admin\IndexController@index'); 
 
