@@ -3,7 +3,7 @@
     <!-- 左侧logo开始 -->
     <div id="mws-logo-container">
         <div id="mws-logo-wrap">
-            <img src="./admin/images/mws-logo.png" alt="mws admin">
+            <img src="/admin/images/mws-logo.png" alt="mws admin">
         </div>
     </div>
     <!-- 左侧logo结束 -->
@@ -13,7 +13,7 @@
         <div id="mws-user-info" class="mws-inset">
             <!-- 管理员头像 -->
             <div id="mws-user-photo">
-                <img src="./admin/example/profile.jpg" alt="User Photo">
+                <img src="/admin/example/profile.jpg" alt="User Photo">
             </div>
             <!-- 管理员头像 -->
             <!-- 管理员登录退出 -->
