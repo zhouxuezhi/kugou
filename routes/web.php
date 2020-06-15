@@ -16,3 +16,5 @@ Route::get('/','admin\IndexController@index');
 Route::post('/','admin\IndexController@index'); 
 //专辑
 Route::resource('/Album',"Admin\AlbumController");
+// Route::get('/Album',"Admin\AlbumController@store")->middleware('zhuanji');
+

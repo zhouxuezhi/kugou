@@ -29,7 +29,7 @@
             </li>
             <li><a href="#">专辑</a>
                 <ul>
-                    <li><a href="">查看专辑</a></li>
+                    <li><a href="/Album">查看专辑</a></li>
                     <li><a href="/Album/create">添加专辑</a></li>
                 </ul>
             </li>
