@@ -20,11 +20,11 @@
                 <a href="/admin/index/index"><i class="icon-home"></i> 首页</a>
             </li>
             <li>
-                <a href=""><i class="icon-list"></i> 功能模块</a>
+                <a href=""><i class="icol32-reseller-programm"></i> 歌手管理</a>
                 <ul>
-                    <li><a href="">模块列表</a></li>
-                    <li><a href="">模块添加</a></li>
-                    <li><a href="">模块扩展</a></li>
+                    <li><a href="/singer">歌手列表</a></li>
+                    <li><a href="/singer/create">歌手添加</a></li>
+                     <li><a href="">专辑管理</a></li>
                 </ul>
             </li>
         </ul>

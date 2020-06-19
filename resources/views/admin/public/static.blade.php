@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <!-- Plugin Stylesheets first to ease overrides -->
+    <link rel="stylesheet" type="text/css" href="/css/app.css" >
     <link rel="stylesheet" type="text/css" href="/admin/plugins/colorpicker/colorpicker.css" media="screen">
 
     <!-- Required Stylesheets -->

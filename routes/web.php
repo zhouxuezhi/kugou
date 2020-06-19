@@ -12,4 +12,5 @@
 */
 //后台 路由
 Route::get('/','admin\IndexController@index');
+Route::resource('/singer','admin\SingerController');
 
