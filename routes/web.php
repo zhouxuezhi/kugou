@@ -12,5 +12,11 @@
 */
 //后台 路由
 Route::get('/','admin\IndexController@index');
+
 Route::resource('/singer','admin\SingerController');
+
+Route::post('/','admin\IndexController@index'); 
+//专辑
+Route::resource('/Album',"Admin\AlbumController");
+// Route::get('/Album',"Admin\AlbumController@store")->middleware('zhuanji');
 

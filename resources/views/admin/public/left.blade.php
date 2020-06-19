@@ -20,11 +20,22 @@
                 <a href="/admin/index/index"><i class="icon-home"></i> 首页</a>
             </li>
             <li>
-                <a href=""><i class="icol32-reseller-programm"></i> 歌手管理</a>
+                <a href=""><i class=""></i> 歌手管理</a>
                 <ul>
                     <li><a href="/singer">歌手列表</a></li>
                     <li><a href="/singer/create">歌手添加</a></li>
-                     <li><a href="">专辑管理</a></li>
+                </ul>
+            </li>
+            <li><a href="#">专辑</a>
+                <ul>
+                    <li><a href="/Album">查看专辑</a></li>
+                    <li><a href="/Album/create">添加专辑</a></li>
+                </ul>
+            </li>
+            <li><a href="">电台</a>
+                <ul>
+                    <li><a href="">查看电台</a></li>
+                    <li><a href="">添加电台</a></li>
                 </ul>
             </li>
         </ul>
