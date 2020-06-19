@@ -27,38 +27,22 @@
     <span>Inline Form</span> 
    </div> 
    <div class="mws-panel-body no-padding"> 
-    <form class="mws-form" action="/Album" method="post" enctype="multipart/form-data"> 
+    <form class="mws-form" action="/dianTai" method="post" enctype="multipart/form-data"> 
     {{csrf_field()}}
      <div class="mws-form-inline"> 
       <div class="mws-form-row"> 
-       <label class="mws-form-label">专辑名称</label> 
+       <label class="mws-form-label">电台名称</label> 
        <div class="mws-form-item"> 
-        <input type="text" class="medium" name="album_name"/> 
+        <input type="text" class="medium" name="name"/> 
        </div> 
       </div> 
+ 
       <div class="mws-form-row"> 
-       <label class="mws-form-label">专辑简介</label> 
-       <div class="mws-form-item"> 
-        <textarea rows="" cols="" class="medium" name="album_js"></textarea> 
-       </div> 
-      </div> 
-      <div class="mws-form-row"> 
-       <label class="mws-form-label">专辑封面图片</label> 
+       <label class="mws-form-label">电台封面图片</label> 
        <div class="mws-form-item"> 
         <input type="file" class="medium" name="pic"/> 
       </div> 
       </div>
-      <div class="mws-form-row"> 
-       <label class="mws-form-label">歌手</label> 
-       <div class="mws-form-item"> 
-        <select class="medium" name="singer_id"> 
-            <option value="0">请选择</option> 
-            @foreach($data as $v)
-            <option value="{{$v->id}}">{{$v->name}}</option> 
-            @endforeach
-        </select> 
-       </div> 
-      </div>  
      <div class="mws-button-row"> 
       <input type="submit" value="添加" class="btn btn-danger" /> 
       <input type="reset" value="重置" class="btn " /> 

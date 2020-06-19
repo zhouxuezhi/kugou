@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-//设置中间件 歌手选择不能为0
-use Illuminate\Http\Resources\Json\Resource;
-
-class AlbumController extends Controller
+class dianTaiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,9 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //查询信息
-        $data=DB::table('zhuanji')->join('singer','singer_id','=','singer.id')->select('zhuanji.*','singer.name')->get();
-        return view('Admin.album.index',['data'=>$data]);
+        //
+        $data=DB::table('diantai')->get();
+        return view('admin.diantai.index',['data'=>$data]);
     }
 
     /**
@@ -30,9 +27,7 @@ class AlbumController extends Controller
     public function create()
     {
         //
-        //获取歌手表数据
-        $data=DB::table('singer')->get();
-        return view('Admin.album.add',['data'=>$data]);
+        return view('admin.diantai.add');
     }
 
     /**
@@ -43,13 +38,8 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
+        //获取数据
         $data=$request->except('_token');
-        //写工具匠控制singer不能为0
-        //图片上传时间
-        $data['addtime']=time();
-        //获取歌手id
-        $data['singer_id']=$request->input('singer_id');
-        //判断上传图片不能为空
         if($request->hasFile('pic')){
             //初始化名字
             $name=time()+rand(1000,9999);
@@ -57,16 +47,17 @@ class AlbumController extends Controller
             $ext=$request->file('pic')->getClientOriginalExtension();
             $albumName=$name.".".$ext;
             //移动到指定目录
-            $request->file('pic')->move("./uploads/album/".date('Y-m-d'),$albumName);
+            $request->file('pic')->move("./uploads/diantai/".date('Y-m-d'),$albumName);
             //专辑封面路径
-            $data['pic']="./uploads/album/".date('Y-m-d')."/".$name.".".$ext;
+            $data['pic']="./uploads/diantai/".date('Y-m-d')."/".$name.".".$ext;
             //插入表中
-            DB::table('zhuanji')->insert($data);
+            DB::table('diantai')->insert($data);
             //设置添加返回成功样式
-            return redirect('/Album');
+            return redirect('/dianTai')->with('success','添加成功');
         }else{
-            echo "添加失败";
+           
             // 设置没有文件上传失败的样式
+            return back()-with('error','添加失败');
         }
     }
 
@@ -89,13 +80,10 @@ class AlbumController extends Controller
      */
     public function edit($id)
     {
-         //获取歌手表数据
-         $data=DB::table('singer')->get();
-         //获取专辑表数据
-         $row=DB::table('zhuanji')->join('singer','singer_id','=','singer.id')->select('zhuanji.*','singer.name')->where('zhuanji.id','=',$id)->first();
-        //  $row=DB::table('zhuanji')->where('id','=',$id)->first();
-        // dd($row);
-        return view('Admin.album.edit',['data'=>$data,'row'=>$row,'id'=>$id]);
+        //
+        $row=DB::table('diantai')->where('id','=',$id)->first();
+      
+        return view('admin.diantai.edit',['row'=>$row,'id'=>$id]);
     }
 
     /**
@@ -108,18 +96,18 @@ class AlbumController extends Controller
     public function update(Request $request, $id)
     {
         //查询原数据
-        $row=DB::table('zhuanji')->where('id','=',$id)->first();
+        $row=DB::table('diantai')->where('id','=',$id)->first();
          $data=$request->except('_token','_method','NewPic');
         if($request->hasFile('NewPic')){
             //初始化名字
             $name=time()+rand(1000,9999);
             //获取后缀
             $ext=$request->file('NewPic')->getClientOriginalExtension();
-            $albumName=$name.".".$ext;
+            $dianTaiName=$name.".".$ext;
             //移动到指定目录
-            $request->file('NewPic')->move("./uploads/album/".date('Y-m-d'),$albumName);
+            $request->file('NewPic')->move("./uploads/diantai/".date('Y-m-d'),$dianTaiName);
             //专辑封面路径
-            $data['pic']="./uploads/album/".date('Y-m-d')."/".$name.".".$ext;
+            $data['pic']="./uploads/diantai/".date('Y-m-d')."/".$name.".".$ext;
             //删除原专辑封面
 
             unlink($row->pic);
@@ -127,11 +115,13 @@ class AlbumController extends Controller
             $data['pic']=$request->input('pic');
         }
        
-        if(DB::table('zhuanji')->where('id','=',$id)->update($data)){
-            return redirect('/Album');
+        if(DB::table('diantai')->where('id','=',$id)->update($data)){
+            return redirect('/dianTai');
         }else{
             return back();
         }
+    
+        
     }
 
     /**
@@ -143,18 +133,17 @@ class AlbumController extends Controller
     public function destroy($id)
     {
         //删除id对应的数据
-        if($data=DB::table('zhuanji')->where('id','=',$id)->first()){
+        if($data=DB::table('diantai')->where('id','=',$id)->first()){
             //删除对应的封面图片
-            DB::table('zhuanji')->where('id','=',$id)->delete();
+            DB::table('diantai')->where('id','=',$id)->delete();
             unlink($data->pic); 
             //带回删除成功
-            return redirect('/Album');
+            return redirect('/dianTai');
         }else{
             echo "删除失败";
             //带回删除失败
             return back();
 
         }
-        
     }
 }

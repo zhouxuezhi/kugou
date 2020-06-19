@@ -34,10 +34,7 @@
      <thead> 
       <tr role="row">
        <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">编号</th>
-       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 247.01px;">专辑名称</th>
-       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 229.01px;">歌手</th>
-       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 156.01px;">专辑简介</th>
-       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 156.01px;">添加时间</th>
+       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 247.01px;">电台名称</th>
        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 156.01px;">状态</th>
        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 156.01px;">封面图片路径</th>
        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 117.01px;">操作</th>
@@ -47,19 +44,17 @@
      @foreach($data as $v)
       <tr class="odd"> 
        <td class="  sorting_1">{{$v->id}}</td> 
-       <td class=" ">{{$v->album_name}}</td>  
-       <td class=" ">{{$v->name}}</td>  
-       <td class=" ">{{$v->album_js}}</td>  
-       <td class=" ">{{$v->addtime}}</td>  
-       <td class=" ">{{$v->state}}</td>  
-       <td class=" ">{{$v->pic}}</td>  
+       <td class="  sorting_1">{{$v->name}}</td> 
+       <td class="  sorting_1">{{$v->state}}</td> 
+       <td class="  sorting_1">{{$v->pic}}</td> 
+  
        <td>
-            <form action="/Album/{{$v->id}}" method="post">
+            <form action="/dianTai/{{$v->id}}" method="post">
                {{method_field('DELETE')}}
                {{csrf_field()}}
             <button>删除</button>
             </form>
-            <form action="/Album/{{$v->id}}/edit" method="get">
+            <form action="/dianTai/{{$v->id}}/edit" method="get">
                
                {{csrf_field()}}
             <button>编辑</button>
