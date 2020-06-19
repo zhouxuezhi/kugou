@@ -17,7 +17,7 @@
     <div id="mws-navigation">
         <ul>
             <li>
-                <a href="/admin/index/index"><i class="icon-home"></i> 首页</a>
+                <a href="/"><i class="icon-home"></i> 首页</a>
             </li>
             <li>
                 <a href=""><i class=""></i> 歌手管理</a>
