@@ -12,4 +12,9 @@
 */
 //后台 路由
 Route::get('/','admin\IndexController@index');
+//周学智测试
+Route::post('/','admin\IndexController@index'); 
+//专辑
+Route::resource('/Album',"Admin\AlbumController");
+// Route::get('/Album',"Admin\AlbumController@store")->middleware('zhuanji');
 

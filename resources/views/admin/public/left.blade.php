@@ -27,6 +27,18 @@
                     <li><a href="">模块扩展</a></li>
                 </ul>
             </li>
+            <li><a href="#">专辑</a>
+                <ul>
+                    <li><a href="/Album">查看专辑</a></li>
+                    <li><a href="/Album/create">添加专辑</a></li>
+                </ul>
+            </li>
+            <li><a href="">电台</a>
+                <ul>
+                    <li><a href="">查看电台</a></li>
+                    <li><a href="">添加电台</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <!-- 左侧导航显示结束 -->
