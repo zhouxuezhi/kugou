@@ -17,7 +17,9 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        return view('Admin.album.index');
+        //查询信息
+        $data=DB::table('zhuanji')->join('singer','singer_id','=','singer.id')->select('zhuanji.*','singer.name')->get();
+        return view('Admin.album.index',['data'=>$data]);
     }
 
     /**
@@ -61,6 +63,7 @@ class AlbumController extends Controller
             //插入表中
             DB::table('zhuanji')->insert($data);
             //设置添加返回成功样式
+            return redirect('/Album');
         }else{
             echo "添加失败";
             // 设置没有文件上传失败的样式
@@ -86,7 +89,13 @@ class AlbumController extends Controller
      */
     public function edit($id)
     {
-        //
+         //获取歌手表数据
+         $data=DB::table('singer')->get();
+         //获取专辑表数据
+         $row=DB::table('zhuanji')->join('singer','singer_id','=','singer.id')->select('zhuanji.*','singer.name')->where('zhuanji.id','=',$id)->first();
+        //  $row=DB::table('zhuanji')->where('id','=',$id)->first();
+        // dd($row);
+        return view('Admin.album.edit',['data'=>$data,'row'=>$row,'id'=>$id]);
     }
 
     /**
@@ -98,7 +107,31 @@ class AlbumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //查询原数据
+        $row=DB::table('zhuanji')->where('id','=',$id)->first();
+         $data=$request->except('_token','_method','NewPic');
+        if($request->hasFile('NewPic')){
+            //初始化名字
+            $name=time()+rand(1000,9999);
+            //获取后缀
+            $ext=$request->file('NewPic')->getClientOriginalExtension();
+            $albumName=$name.".".$ext;
+            //移动到指定目录
+            $request->file('NewPic')->move("./uploads/album/".date('Y-m-d'),$albumName);
+            //专辑封面路径
+            $data['pic']="./uploads/album/".date('Y-m-d')."/".$name.".".$ext;
+            //删除原专辑封面
+
+            unlink($row->pic);
+        }else{
+            $data['pic']=$request->input('pic');
+        }
+       
+        if(DB::table('zhuanji')->where('id','=',$id)->update($data)){
+            return redirect('/Album');
+        }else{
+            return back();
+        }
     }
 
     /**
@@ -109,6 +142,19 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //删除id对应的数据
+        if($data=DB::table('zhuanji')->where('id','=',$id)->first()){
+            //删除对应的封面图片
+            DB::table('zhuanji')->where('id','=',$id)->delete();
+            unlink($data->pic); 
+            //带回删除成功
+            return redirect('/Album');
+        }else{
+            echo "删除失败";
+            //带回删除失败
+            return back();
+
+        }
+        
     }
 }
