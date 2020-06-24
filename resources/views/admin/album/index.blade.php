@@ -29,6 +29,21 @@
     </div>
     <div class="dataTables_filter" id="DataTables_Table_1_filter">
      <label>Search: <input type="text" aria-controls="DataTables_Table_1" /></label>
+  <div class="mws-panel grid_8"> 
+   <div class="mws-panel-header" style="height:50px;width:100%;"> 
+    <span ><i class="icon-table" ></i> 专辑列表</span> 
+   </div> 
+   <div style="height:20px;width:100%;"></div>
+   <div class="mws-panel-body no-padding"> 
+    <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
+     <div id="DataTables_Table_1_length" class="dataTables_length">
+    
+    <form action="/table" method="get">
+        <label>专辑: <input type="text" value="" name="" aria-controls="DataTables_Table_1" /></label>
+        {{csrf_field()}}
+        <label>歌手: <input type="text" value="" name="" aria-controls="DataTables_Table_1" /></label>
+        <input type="submit" value="搜索">
+    </form>
     </div>
     <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info"> 
      <thead> 

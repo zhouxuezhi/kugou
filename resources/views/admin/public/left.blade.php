@@ -17,14 +17,13 @@
     <div id="mws-navigation">
         <ul>
             <li>
-                <a href="/admin/index/index"><i class="icon-home"></i> 首页</a>
+                <a href="/"><i class="icon-home"></i> 首页</a>
             </li>
             <li>
-                <a href=""><i class="icon-list"></i> 功能模块</a>
+                <a href=""><i class=""></i> 歌手管理</a>
                 <ul>
-                    <li><a href="">模块列表</a></li>
-                    <li><a href="">模块添加</a></li>
-                    <li><a href="">模块扩展</a></li>
+                    <li><a href="/singer">歌手列表</a></li>
+                    <li><a href="/singer/create">歌手添加</a></li>
                 </ul>
             </li>
             <li><a href="#">专辑</a>
