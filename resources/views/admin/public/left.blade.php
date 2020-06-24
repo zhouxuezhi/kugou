@@ -26,6 +26,13 @@
                     <li><a href="/singer/create">歌手添加</a></li>
                 </ul>
             </li>
+            <li>
+                <a href=""><i class=""></i> 精选歌单</a>
+                <ul>
+                    <li><a href="">歌单列表</a></li>
+                    <li><a href="">歌单添加</a></li>
+                </ul>
+            </li>
             <li><a href="#">专辑</a>
                 <ul>
                     <li><a href="/Album">查看专辑</a></li>
