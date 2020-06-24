@@ -34,8 +34,8 @@
             </li>
             <li><a href="">电台</a>
                 <ul>
-                    <li><a href="">查看电台</a></li>
-                    <li><a href="">添加电台</a></li>
+                    <li><a href="/dianTai">查看电台</a></li>
+                    <li><a href="/dianTai/create">添加电台</a></li>
                 </ul>
             </li>
         </ul>
